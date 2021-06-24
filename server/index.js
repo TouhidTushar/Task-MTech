@@ -8,6 +8,9 @@ require("dotenv").config();
 //routes
 const productRoutes = require("./src/routes/product");
 
+//front end static files
+app.use("/", express.static("./build"));
+
 //middleware
 app.use(cors());
 app.use(express.json());
