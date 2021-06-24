@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import logo from "../../assets/logo.png";
 import cart from "../../assets/cart-icon.png";
+// import { imageDir } from "../../urlConfig";
 import { useSelector } from "react-redux";
 
 const Header = (props) => {
@@ -34,13 +35,17 @@ const Header = (props) => {
     <header className={scroll ? "headerWrapperAct" : "headerWrapper"}>
       {/* logo */}
       <Link to="/" className="logo">
+        {/* <img src={`${imageDir}logo.png`} alt="placeholder-logo" /> */}
         <img src={logo} alt="placeholder-logo" />
       </Link>
 
       {/* cart-button */}
       <button className="cartBtn" onClick={showCartModal}>
+        {/* <img src={`${imageDir}cart-icon.png`} alt="cart-icon" /> */}
         <img src={cart} alt="cart-icon" />
-        <span>{cartItems.length > 0 ? cartItems.length : null}</span>
+        <span>
+          {cartItems ? (cartItems.length > 0 ? cartItems.length : null) : null}
+        </span>
       </button>
 
       {/* cart-modal */}
