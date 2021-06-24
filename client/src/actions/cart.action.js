@@ -3,7 +3,6 @@ import { cartConstants } from "./constants";
 export const getCartItems = () => {
   return async (dispatch) => {
     var localCart = JSON.parse(localStorage.getItem("Cart"));
-    console.log(localCart);
     dispatch({
       type: cartConstants.ADDTOCART_SUCCESS,
       payload: { currentCartItems: localCart },
