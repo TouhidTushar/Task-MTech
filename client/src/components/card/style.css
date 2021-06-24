@@ -1,0 +1,221 @@
+.cardWrapper {
+  margin: 50px 0;
+}
+
+.card {
+  position: relative;
+  margin-bottom: 15px;
+  width: 255px;
+  height: 340px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  -webkit-filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+}
+
+.card:hover .imgBox img {
+  -webkit-transform: scale(0.8, 0.8) rotateZ(8deg) translateY(-33%);
+          transform: scale(0.8, 0.8) rotateZ(8deg) translateY(-33%);
+}
+
+.card:hover .imgBox::before {
+  width: 300px;
+  height: 280px;
+}
+
+.imgBox {
+  width: 100%;
+}
+
+.imgBox::before {
+  content: "";
+  width: 200px;
+  height: 200px;
+  background-color: #2a80b9;
+  border-radius: 50%;
+  top: -100px;
+  right: -80px;
+  position: absolute;
+  z-index: -1;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.imgBox img {
+  width: 100%;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.imgBoxActive {
+  width: 100%;
+}
+
+.imgBoxActive::before {
+  content: "";
+  width: 300px;
+  height: 280px;
+  border-radius: 50%;
+  background-color: #2a80b9;
+  top: -100px;
+  right: -80px;
+  position: absolute;
+  z-index: -1;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.imgBoxActive img {
+  width: 100%;
+  -webkit-transform: scale(0.8, 0.8) rotateZ(8deg) translateY(-33%);
+          transform: scale(0.8, 0.8) rotateZ(8deg) translateY(-33%);
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.detailsBox {
+  position: absolute;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 10px;
+  bottom: 0;
+  background-color: #fff;
+  -webkit-box-shadow: 0px -3px 2px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px -3px 2px rgba(0, 0, 0, 0.1);
+}
+
+.detailsBox p {
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.detailsBox p:nth-of-type(1) {
+  font-size: 1.3em;
+}
+
+.detailsBox p:nth-of-type(2) {
+  color: #2a80b9;
+}
+
+.detailsBox .oldPrice {
+  font-size: 0.9em;
+  text-decoration: line-through;
+  opacity: 0.6;
+  padding-left: 5px;
+  color: #000;
+}
+
+.productQuantityControl {
+  margin-top: 15px;
+}
+
+.productQuantityControl i {
+  background-color: #ffc16e;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.productQuantityControl span {
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+  background-color: #d0d0d7;
+  padding: 8px 0;
+  margin: 0 10px;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3), inset -2px -2px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3), inset -2px -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.productQuantityControl button {
+  background-color: #777;
+  border: none;
+  color: #fff;
+  font-size: 1em;
+  padding: 8px;
+  border-radius: 5px;
+  margin-left: 12px;
+}
+
+.productQuantityControl button:hover {
+  background-color: #333;
+}
+
+.dummyBtn {
+  width: 255px;
+  padding: 8px 0;
+  font-size: 1em;
+  color: #fff;
+  border: none;
+  background-color: #777;
+  border-radius: 5px;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  cursor: not-allowed;
+}
+
+.dummyBtn:hover {
+  background-color: #333;
+}
+
+.addToCartBtn {
+  width: 255px;
+  padding: 8px 0;
+  font-size: 1em;
+  color: #fff;
+  border: none;
+  background-color: #2a80b9;
+  border-radius: 5px;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.addToCartBtn:hover {
+  background-color: #226694;
+}
+
+.addToCartBtnActive {
+  width: 255px;
+  padding: 8px 0;
+  font-size: 1em;
+  color: #fff;
+  border: none;
+  opacity: 0;
+  pointer-events: none;
+  background-color: #2a80b9;
+  border-radius: 5px;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.addToCartBtnActive:hover {
+  background-color: #226694;
+}
+/*# sourceMappingURL=style.css.map */

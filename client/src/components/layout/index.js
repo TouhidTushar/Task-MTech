@@ -5,7 +5,7 @@ import "./style.css";
 const Layout = (props) => {
   return (
     <div className="mainContainer">
-      <Header alt={props.minimal ? true : false} />
+      <Header />
       {props.children}
       {/* <Footer /> */}
     </div>

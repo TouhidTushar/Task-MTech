@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getAllCategories, getAllProducts } from "./actions";
+import { getAllCategories, getAllProducts, getCartItems } from "./actions";
 import "./App.css";
 import { BrowserRouter as Switch, Route } from "react-router-dom";
 import ProductsPage from "./containers/productsPage";
@@ -12,6 +12,7 @@ function App() {
   useEffect(() => {
     dispatch(getAllProducts());
     dispatch(getAllCategories());
+    dispatch(getCartItems());
     // eslint-disable-next-line
   }, []);
   return (

@@ -1,26 +1,37 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Card from "../../components/card";
 import Layout from "../../components/layout";
+import "./style.css";
 
 function ProductsPage() {
   const products = useSelector((state) => state.product.allProducts);
+  const categories = useSelector((state) => state.product.allCategories);
   return (
     <Layout>
-      <div>
-        <h1>products page</h1>
-        {products.map((item, index) => (
-          <div key={index}>
-            <img
-              src={item.imageRef}
-              alt={item.title + "photo"}
-              style={{ width: "250px " }}
-            />
-            <h3>{item.title}</h3>
-            <p>
-              <b>{item.price}</b>
-            </p>
+      <div className="productPageWrapper">
+        <p className="directory">products {">"} new arrivals</p>
+        <h1>new arrivals</h1>
+        <div className="productControls">
+          <div className="filters">
+            {categories.map((item, index) => (
+              <button key={index}>{item.category}</button>
+            ))}
           </div>
-        ))}
+          <div className="viewControls">
+            <button>
+              <i className="fas fa-th"></i>
+            </button>
+            <button>
+              <i className="fas fa-list-ul"></i>
+            </button>
+          </div>
+        </div>
+        <div className="productShowcase">
+          {products.map((item, index) => (
+            <Card key={index} data={item}></Card>
+          ))}
+        </div>
       </div>
     </Layout>
   );

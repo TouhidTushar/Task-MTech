@@ -7,3 +7,7 @@ export const productConstants = {
   GETPRODUCT_SUCCESS: "GETPRODUCT_SUCCESS",
   GETPRODUCT_FAILURE: "GETPRODUCT_FAILURE",
 };
+
+export const cartConstants = {
+  ADDTOCART_SUCCESS: "ADDTOCART_SUCCESS",
+};
