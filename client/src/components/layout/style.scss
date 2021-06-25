@@ -1,8 +1,8 @@
 .mainContainer {
   position: relative;
   width: 100%;
-  padding-top: 12vh;
-  padding-bottom: 5vh;
-  min-height: 83vh;
+  padding-top: 125px;
+  padding-bottom: 55px;
+  min-height: calc(100vh - 180px) !important;
   transition: 0.3s ease-in-out;
 }

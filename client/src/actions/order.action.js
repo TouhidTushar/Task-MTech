@@ -1,6 +1,7 @@
 import axios from "../helpers/axios";
 import { orderConstants } from "./constants";
 
+//retrieve past order history from localstorage and store in global state
 export const getOrderHistory = () => {
   return async (dispatch) => {
     try {
@@ -25,6 +26,7 @@ export const getOrderHistory = () => {
   };
 };
 
+//place a new order in database and update the global state
 export const placeNewOrder = (orderData) => {
   return async (dispatch) => {
     try {

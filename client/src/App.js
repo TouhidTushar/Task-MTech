@@ -1,5 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { BrowserRouter as Switch, Route } from "react-router-dom";
+import ProductsPage from "./containers/productsPage";
+import LandingPage from "./containers/landingPage";
 import {
   getAllCategories,
   getAllProducts,
@@ -7,9 +10,6 @@ import {
   getOrderHistory,
 } from "./actions";
 import "./App.css";
-import { BrowserRouter as Switch, Route } from "react-router-dom";
-import ProductsPage from "./containers/productsPage";
-import LandingPage from "./containers/landingPage";
 
 function App() {
   const dispatch = useDispatch();

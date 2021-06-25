@@ -9,7 +9,7 @@ export const productConstants = {
 };
 
 export const cartConstants = {
-  ADDTOCART_SUCCESS: "ADDTOCART_SUCCESS",
+  MANAGE_CART_STATE: "MANAGE_CART_STATE",
 };
 
 export const orderConstants = {

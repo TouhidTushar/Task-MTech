@@ -7,7 +7,8 @@ const initState = {
 
 const cartReducer = (state = initState, action) => {
   switch (action.type) {
-    case cartConstants.ADDTOCART_SUCCESS:
+    //manage global cart state
+    case cartConstants.MANAGE_CART_STATE:
       state = {
         ...state,
         cartItems: action.payload.currentCartItems,

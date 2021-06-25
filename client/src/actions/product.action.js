@@ -1,7 +1,7 @@
 import axios from "../helpers/axios";
 import { productConstants } from "./constants";
 
-// getting all categories
+// get all categories from database
 export const getAllCategories = () => {
   return async (dispatch) => {
     try {
@@ -26,7 +26,7 @@ export const getAllCategories = () => {
   };
 };
 
-// getting all products
+// get all products from database
 export const getAllProducts = () => {
   return async (dispatch) => {
     try {

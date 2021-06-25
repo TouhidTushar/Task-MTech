@@ -1,17 +1,19 @@
 import { cartConstants } from "./constants";
 
+//get all cart items from localStorage
 export const getCartItems = () => {
   return async (dispatch) => {
     var localCart = JSON.parse(localStorage.getItem("Cart"));
     if (localCart !== null) {
       dispatch({
-        type: cartConstants.ADDTOCART_SUCCESS,
+        type: cartConstants.MANAGE_CART_STATE,
         payload: { currentCartItems: localCart },
       });
     }
   };
 };
 
+//add items to cart (new/existing)
 export const addItemsToCart = (arg1, arg2) => {
   return async (dispatch) => {
     var itemAlreadyExist = false;
@@ -26,13 +28,14 @@ export const addItemsToCart = (arg1, arg2) => {
       cartItems.push(arg2);
     }
     dispatch({
-      type: cartConstants.ADDTOCART_SUCCESS,
+      type: cartConstants.MANAGE_CART_STATE,
       payload: { currentCartItems: cartItems },
     });
     localStorage.setItem("Cart", JSON.stringify(cartItems));
   };
 };
 
+//increase existing item in cart
 export const updateCartAdd = (arg1, arg2) => {
   return async (dispatch) => {
     var cartItems = arg1;
@@ -42,13 +45,14 @@ export const updateCartAdd = (arg1, arg2) => {
       }
     }
     dispatch({
-      type: cartConstants.ADDTOCART_SUCCESS,
+      type: cartConstants.MANAGE_CART_STATE,
       payload: { currentCartItems: cartItems },
     });
     localStorage.setItem("Cart", JSON.stringify(cartItems));
   };
 };
 
+//decrease existing item in cart
 export const updateCartSub = (arg1, arg2) => {
   return async (dispatch) => {
     var cartItems = arg1;
@@ -58,13 +62,14 @@ export const updateCartSub = (arg1, arg2) => {
       }
     }
     dispatch({
-      type: cartConstants.ADDTOCART_SUCCESS,
+      type: cartConstants.MANAGE_CART_STATE,
       payload: { currentCartItems: cartItems },
     });
     localStorage.setItem("Cart", JSON.stringify(cartItems));
   };
 };
 
+//drop an item from cart
 export const dropCartItem = (arg1, arg2) => {
   return async (dispatch) => {
     var cartItems = arg1;
@@ -75,18 +80,19 @@ export const dropCartItem = (arg1, arg2) => {
       }
     }
     dispatch({
-      type: cartConstants.ADDTOCART_SUCCESS,
+      type: cartConstants.MANAGE_CART_STATE,
       payload: { currentCartItems: cartItems },
     });
     localStorage.setItem("Cart", JSON.stringify(cartItems));
   };
 };
 
+//clear whole cart
 export const emptyCart = () => {
   return async (dispatch) => {
     localStorage.removeItem("Cart");
     dispatch({
-      type: cartConstants.ADDTOCART_SUCCESS,
+      type: cartConstants.MANAGE_CART_STATE,
       payload: { currentCartItems: [] },
     });
   };

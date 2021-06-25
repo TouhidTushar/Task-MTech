@@ -1,15 +1,17 @@
 const db = require("../../database");
+const { nanoid } = require("nanoid");
 
 exports.placeOrder = (req, res) => {
   const orderData = req.body.data;
   var exec = true;
+  var _orderId = nanoid();
   var sql =
     "INSERT INTO `orders` (`orderId`, `customerName`, `address`, `contact`, `productId`, `orderQuantity`, `totalPayable`) VALUES (?,?,?,?,?,?,?)";
   for (let i = 0; i < orderData.items.length; i++) {
     db.query(
       sql,
       [
-        orderData._ordId,
+        _orderId,
         orderData.name,
         orderData.address,
         orderData.contact,

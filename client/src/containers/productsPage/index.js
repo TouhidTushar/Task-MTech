@@ -5,8 +5,8 @@ import Card from "../../components/card";
 import "./style.css";
 
 function ProductsPage() {
-  const products = useSelector((state) => state.product.allProducts);
   const categories = useSelector((state) => state.product.allCategories);
+  const products = useSelector((state) => state.product.allProducts);
   const [activeCategory, setActiveCategory] = useState("all");
   const [showcase, setShowcase] = useState(products);
 
