@@ -1,19 +1,22 @@
 const mysql = require("mysql2");
+require("dotenv").config();
 
-const productionDB = true;
+//set the value of productionDB to false for using localDB
+//set the value of productionDB to true for using cloudDB
+const productionDB = false;
 
 if (productionDB) {
   module.exports = mysql.createPool({
-    host: "b0voafdqk3ocxz0h335g-mysql.services.clever-cloud.com",
-    user: "unabrnbfcivipqru",
-    password: "RzBwToJK4IC7W06l4ibl",
-    database: "b0voafdqk3ocxz0h335g",
+    host: process.env.HOST, //your hostname
+    user: process.env.USER, //your username
+    password: process.env.PASSWORD, //your password
+    database: process.env.DATABASE, //your database
   });
 } else {
   module.exports = mysql.createPool({
     host: "localhost",
-    user: "root",
-    password: "admin1234",
-    database: "mtechtask",
+    user: "root", //change this to your local username
+    password: "admin1234", //change this to your local user password
+    database: "mtechtasklocal", //no need to change this
   });
 }

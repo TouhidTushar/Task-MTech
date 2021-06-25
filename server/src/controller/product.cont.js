@@ -1,6 +1,6 @@
 const db = require("../../database");
 
-//getCategory API
+//API for retrieving all categories
 exports.getCategories = (req, res) => {
   db.query("SELECT * from categories", function (error, result) {
     if (error) {
@@ -14,7 +14,7 @@ exports.getCategories = (req, res) => {
   });
 };
 
-//getProduct API
+//API for retrieving all products
 exports.getProducts = (req, res) => {
   db.query("SELECT * from products", function (error, result) {
     if (error) {

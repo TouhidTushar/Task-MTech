@@ -1,6 +1,7 @@
 const db = require("../../database");
 const { nanoid } = require("nanoid");
 
+//API for placing new order
 exports.placeOrder = (req, res) => {
   const orderData = req.body.data;
   var exec = true;

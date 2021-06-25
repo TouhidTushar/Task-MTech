@@ -10,10 +10,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `b0voafdqk3ocxz0h335g`
+-- Database: `mtechtasklocal`
 --
 
-CREATE SCHEMA `mtechtasklocal` ;
+CREATE SCHEMA `mtechtasklocal`;
 USE `mtechtasklocal`;
 
 -- --------------------------------------------------------
@@ -23,7 +23,7 @@ USE `mtechtasklocal`;
 --
 
 CREATE TABLE `categories` (
-  `category` varchar(255) NOT NULL
+  `category` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -43,7 +43,7 @@ INSERT INTO `categories` (`category`) VALUES
 --
 
 CREATE TABLE `orders` (
-  `orderId` int NOT NULL,
+  `orderId` varchar(255) NOT NULL,
   `customerName` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `contact` varchar(255) NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE `orders` (
 
 CREATE TABLE `products` (
   `productId` int NOT NULL,
-  `title` varchar(255) DEFAULT NULL,
+  `title` varchar(24) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `category` varchar(255) DEFAULT NULL,
   `quantity` int DEFAULT NULL,
   `price` decimal(19,2) DEFAULT NULL,
@@ -74,15 +74,15 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`productId`, `title`, `category`, `quantity`, `price`, `offer`, `imageRef`) VALUES
 (1000, 'Men\'s T-Shirt Black', 'men', 15, '11.99', 5, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/t-shirt.png?alt=media&token=25586e62-a6ed-428c-b350-22c09748012d'),
-(1001, 'Men\'s T-Shirt White', 'men', 5, '12.99', 0, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/t-shirt.png?alt=media&token=25586e62-a6ed-428c-b350-22c09748012d'),
-(1002, 'Men\'s T-Shirt Grey', 'men', 8, '13.99', 10, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/t-shirt.png?alt=media&token=25586e62-a6ed-428c-b350-22c09748012d'),
-(1003, 'Men\'s T-Shirt Red', 'men', 0, '10.99', 0, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/t-shirt.png?alt=media&token=25586e62-a6ed-428c-b350-22c09748012d'),
-(1004, 'Men\'s T-Shirt Blue', 'men', 10, '9.99', 0, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/t-shirt.png?alt=media&token=25586e62-a6ed-428c-b350-22c09748012d'),
+(1001, 'Men\'s T-Shirt White', 'men', 5, '12.99', 0, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/t-shirt-2.png?alt=media&token=71aa2c87-37d0-4bff-8873-9a93a4f03a90'),
+(1002, 'Men\'s T-Shirt Orange', 'men', 8, '13.99', 10, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/t-shirt-1.png?alt=media&token=710bb5b7-c402-4917-9801-05e6171eae56'),
+(1003, 'Nike Training Shoe', 'men', 0, '139.99', 0, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/nike-shoe.png?alt=media&token=7dcb8682-4f87-47bd-8347-6d6e43d10861'),
+(1004, 'Skmei Smart Watch', 'men', 6, '39.99', 0, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/wrist-watch.png?alt=media&token=5a62a0b4-ecb3-4238-a863-dfb8b796e628'),
 (1005, 'Women\'s Checked Kurti', 'women', 12, '16.99', 15, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/kurti.png?alt=media&token=0088cd68-a473-4b27-ad4d-e6a065e4a18b'),
-(1006, 'Women\'s Plane Kurti', 'women', 0, '11.99', 0, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/kurti.png?alt=media&token=0088cd68-a473-4b27-ad4d-e6a065e4a18b'),
-(1007, 'Women\'s Kurti Blue', 'women', 10, '14.99', 10, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/kurti.png?alt=media&token=0088cd68-a473-4b27-ad4d-e6a065e4a18b'),
-(1008, 'Kids Sneakers Blue', 'kids', 6, '11.99', 0, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/sneakers.png?alt=media&token=3e98d130-fa94-492a-a98b-b0443eb6bc9b'),
-(1009, 'Kids Sneakers Green', 'kids', 10, '14.99', 10, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/sneakers.png?alt=media&token=3e98d130-fa94-492a-a98b-b0443eb6bc9b');
+(1006, 'Black High Heels', 'women', 0, '159.99', 0, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/heels.png?alt=media&token=3987afd7-b4aa-44fb-b414-9fa8843c282d'),
+(1007, 'Tinted Black Glasses', 'women', 10, '14.99', 10, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/sunglass.png?alt=media&token=b2ec7244-9417-4a2d-9ca2-0928b8382c4d'),
+(1008, 'Kids Sneakers Blue', 'kids', 6, '14.99', 10, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/sneakers.png?alt=media&token=3e98d130-fa94-492a-a98b-b0443eb6bc9b'),
+(1009, 'Kids Summer Hat', 'kids', 7, '8.99', 0, 'https://firebasestorage.googleapis.com/v0/b/mtechtask.appspot.com/o/hats.png?alt=media&token=42b70cb2-eb37-42bf-8eec-aae6df8f82a2');
 
 --
 -- Indexes for dumped tables
