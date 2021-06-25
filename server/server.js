@@ -3,6 +3,7 @@ const cors = require("cors");
 
 //routes
 const productRoutes = require("./src/routes/product");
+const orderRoutes = require("./src/routes/order");
 
 //env config
 require("dotenv").config();
@@ -19,6 +20,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api", productRoutes);
+app.use("/api", orderRoutes);
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "build/index.html"), function (err) {
     if (err) {

@@ -11,3 +11,9 @@ export const productConstants = {
 export const cartConstants = {
   ADDTOCART_SUCCESS: "ADDTOCART_SUCCESS",
 };
+
+export const orderConstants = {
+  PLACEORDER_REQUEST: "PLACEORDER_REQUEST",
+  PLACEORDER_SUCCESS: "PLACEORDER_SUCCESS",
+  PLACEORDER_FAILURE: "PLACEORDER_FAILURE",
+};

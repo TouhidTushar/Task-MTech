@@ -34,8 +34,8 @@ function Card(props) {
       price: calculateOfferPrice(),
       orderQuantity: productQty,
     };
-    console.log(_item);
     dispatch(addItemsToCart(cartItmes, _item));
+    setProductQty(1);
   };
 
   return (
