@@ -81,3 +81,13 @@ export const dropCartItem = (arg1, arg2) => {
     localStorage.setItem("Cart", JSON.stringify(cartItems));
   };
 };
+
+export const emptyCart = () => {
+  return async (dispatch) => {
+    localStorage.removeItem("Cart");
+    dispatch({
+      type: cartConstants.ADDTOCART_SUCCESS,
+      payload: { currentCartItems: [] },
+    });
+  };
+};

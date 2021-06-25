@@ -5,6 +5,7 @@ $colorD: #226694;
 
 .cardWrapper {
   margin: 50px 0;
+  position: relative;
 }
 
 .card {
@@ -30,6 +31,9 @@ $colorD: #226694;
         height: 280px;
       }
     }
+    .hiddenInfo {
+      transform: translateY(-100px);
+    }
   }
 }
 
@@ -53,6 +57,14 @@ $colorD: #226694;
   }
 }
 
+#offerTag {
+  width: 100px;
+  position: absolute;
+  top: -10px;
+  left: -12px;
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3));
+}
+
 .imgBoxActive {
   &::before {
     content: "";
@@ -71,6 +83,17 @@ $colorD: #226694;
     width: 100%;
     transform: scale(0.8, 0.8) rotateZ(8deg) translateY(-33%);
     transition: all 0.4s ease-in-out;
+  }
+}
+
+.hiddenInfo {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(0px);
+  transition: all 0.4s ease-in-out;
+  p {
+    font-size: 1.2em;
+    color: #777;
   }
 }
 

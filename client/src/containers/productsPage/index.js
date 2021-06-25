@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Card from "../../components/card";
 import Layout from "../../components/layout";
+import Card from "../../components/card";
 import "./style.css";
 
 function ProductsPage() {
@@ -9,6 +9,10 @@ function ProductsPage() {
   const categories = useSelector((state) => state.product.allCategories);
   const [activeCategory, setActiveCategory] = useState("all");
   const [showcase, setShowcase] = useState(products);
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   useEffect(() => {
     setShowcase(products);
@@ -34,31 +38,29 @@ function ProductsPage() {
       <div className="productPageWrapper">
         <p className="directory">products {">"} new arrivals</p>
         <h1>new arrivals</h1>
-        <div className="productControls">
-          <div className="filters">
-            {categories.map((item, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveCategory(item.category)}
-                className={
-                  activeCategory === item.category
-                    ? "filterBtnActive"
-                    : "filterBtn"
-                }
-              >
-                {item.category}
-              </button>
-            ))}
+
+        {/* filter-control-bar */}
+        {categories.length > 0 ? (
+          <div className="productControls">
+            <div className="filters">
+              {categories.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveCategory(item.category)}
+                  className={
+                    activeCategory === item.category
+                      ? "filterBtnActive"
+                      : "filterBtn"
+                  }
+                >
+                  {item.category}
+                </button>
+              ))}
+            </div>
           </div>
-          {/* <div className="viewControls">
-            <button>
-              <i className="fas fa-th"></i>
-            </button>
-            <button>
-              <i className="fas fa-list-ul"></i>
-            </button>
-          </div> */}
-        </div>
+        ) : null}
+
+        {/* product-showcase */}
         <div className="productShowcase">
           {showcase.map((item, index) => (
             <Card key={index} data={item}></Card>

@@ -1,5 +1,6 @@
 .cardWrapper {
   margin: 50px 0;
+  position: relative;
 }
 
 .card {
@@ -37,6 +38,11 @@
   height: 280px;
 }
 
+.card:hover .hiddenInfo {
+  -webkit-transform: translateY(-100px);
+          transform: translateY(-100px);
+}
+
 .imgBox {
   width: 100%;
 }
@@ -59,6 +65,15 @@
   width: 100%;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
+}
+
+#offerTag {
+  width: 100px;
+  position: absolute;
+  top: -10px;
+  left: -12px;
+  -webkit-filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3));
+          filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3));
 }
 
 .imgBoxActive {
@@ -85,6 +100,20 @@
           transform: scale(0.8, 0.8) rotateZ(8deg) translateY(-33%);
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
+}
+
+.hiddenInfo {
+  position: absolute;
+  bottom: 0;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.hiddenInfo p {
+  font-size: 1.2em;
+  color: #777;
 }
 
 .detailsBox {

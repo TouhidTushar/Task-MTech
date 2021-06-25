@@ -6,18 +6,25 @@ import cart from "../../assets/cart-icon.png";
 import deleteIcon from "../../assets/delete.png";
 import cartImage from "../../assets/cart-image.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { dropCartItem, updateCartAdd, updateCartSub } from "../../actions";
-import { placeNewOrder } from "../../actions/order.action";
+import {
+  dropCartItem,
+  updateCartAdd,
+  updateCartSub,
+  placeNewOrder,
+  emptyCart,
+} from "../../actions";
 
-const Header = () => {
+function Header() {
   const dispatch = useDispatch();
   const [scroll, setScroll] = useState(false);
   const [showCart, setShowCart] = useState(false);
+  const [responseModal, setResponseModal] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [orderStep, setOrderStep] = useState(0);
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [contact, setContact] = useState("");
+  const order = useSelector((state) => state.order);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const cartState = useSelector((state) => state.cart);
 
@@ -37,6 +44,7 @@ const Header = () => {
   window.addEventListener("scroll", handleScroll);
 
   const showCartModal = () => {
+    setOrderStep(0);
     setShowCart(true);
     document.body.style.overflow = "hidden";
   };
@@ -87,9 +95,15 @@ const Header = () => {
 
   const handlePlaceOrder = (e) => {
     e.preventDefault();
-    setOrderStep(2);
-    // console.log(orderData);
+    setShowCart(false);
+    setResponseModal(true);
     dispatch(placeNewOrder(orderData));
+    dispatch(emptyCart());
+  };
+
+  const hideResponseModal = () => {
+    setResponseModal(false);
+    document.body.style.overflow = "unset";
   };
 
   return (
@@ -132,10 +146,6 @@ const Header = () => {
             <i className="fas fa-chevron-right"></i>
           </p>
           <p style={orderStep > 0 ? { color: "#ffc16e" } : null}>Checkout</p>
-          <p style={orderStep > 1 ? { color: "#ffc16e" } : null}>
-            <i className="fas fa-chevron-right"></i>
-          </p>
-          <p style={orderStep > 1 ? { color: "#ffc16e" } : null}>Confirm</p>
         </div>
 
         {/* cart-products */}
@@ -175,12 +185,7 @@ const Header = () => {
                 </div>
               ))
             ) : (
-              <>
-                <h2>"No items in your cart!"</h2>
-                <button id="cartBtnA" onClick={hideCartModal}>
-                  Continue Shopping
-                </button>
-              </>
+              <h2>"No items in your cart!"</h2>
             )}
             {cartItems.length > 0 ? (
               <div className="cartTotalBox">
@@ -188,18 +193,13 @@ const Header = () => {
                 <p>${calculateCartTotal()}</p>
               </div>
             ) : null}
-            {cartItems.length > 0 ? (
-              <button id="cartBtnA" onClick={() => setOrderStep(1)}>
-                Checkout
-              </button>
-            ) : null}
           </div>
         ) : null}
 
         {/* cart-checkout */}
         {orderStep === 1 ? (
           <div className="cartBody">
-            <button id="cartBtnB" onClick={() => setOrderStep(0)}>
+            <button id="cartBtnC" onClick={() => setOrderStep(0)}>
               <i className="fas fas fa-arrow-left"></i> Go back
             </button>
             <h1>Order Summary</h1>
@@ -281,15 +281,86 @@ const Header = () => {
                 </i>
               </p>
             </form>
+          </div>
+        ) : null}
 
+        {/* cart-footer */}
+        <div className="cartFooter">
+          {orderStep === 0 ? (
+            cartItems.length > 0 ? (
+              <>
+                <button id="cartBtnA" onClick={() => setOrderStep(1)}>
+                  Checkout
+                </button>
+                <button id="cartBtnB" onClick={() => dispatch(emptyCart())}>
+                  Clear Cart
+                </button>
+              </>
+            ) : (
+              <button id="cartBtnA" onClick={hideCartModal}>
+                Continue Shopping
+              </button>
+            )
+          ) : null}
+          {orderStep === 1 ? (
             <button id="cartBtnA" type="submit" form="orderForm">
               place order
             </button>
-          </div>
-        ) : null}
+          ) : null}
+        </div>
+      </div>
+
+      {/* response modal */}
+
+      <div
+        onClick={hideResponseModal}
+        className={responseModal ? "responseModalActive" : "responseModal"}
+      ></div>
+      <div
+        className={responseModal ? "modalContainerActive" : "modalContainer"}
+      >
+        <div className="modalUpperSection">
+          <i
+            className="fas fa-times"
+            id="modalCloseBtn"
+            onClick={hideResponseModal}
+          ></i>
+          {order.loading ? (
+            <div className="loadingWheel"></div>
+          ) : order.result ? (
+            <div className="responseSign">
+              <i className="fas fa-check"></i>
+              <div className="signCover"></div>
+            </div>
+          ) : (
+            <div className="responseSign">
+              <i className="fas fa-exclamation"></i>
+              <div className="signCover"></div>
+            </div>
+          )}
+        </div>
+        <div className="modalLowerSection">
+          {order.loading ? (
+            <div>
+              <h1>Placing your order...</h1>
+            </div>
+          ) : (
+            <div>
+              <h1>{order.serverRes}</h1>
+              {order.serverRes === "" ? null : order.result === true ? (
+                <h3>Our representative will contact you shortly. Thank you.</h3>
+              ) : (
+                <h3>
+                  Please try again. If you see this message multiple times
+                  contact our 24/7 support team. Thank you
+                </h3>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );
-};
+}
 
 export default Header;

@@ -1,0 +1,25 @@
+.copyright {
+  width: 100%;
+  height: 5vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #222;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.copyright i,
+.copyright span {
+  color: #fff;
+  letter-spacing: 2px;
+  margin: 0 3px;
+}
+/*# sourceMappingURL=style.css.map */

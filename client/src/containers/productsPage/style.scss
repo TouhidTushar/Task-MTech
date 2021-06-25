@@ -23,9 +23,10 @@ $colorB: #d0d0d7;
 
 .productControls {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   width: 95%;
-  padding: 10px 0;
+  padding: 5px 0;
   margin: 0 auto 20px auto;
   border-radius: 50px;
   background-color: $colorB;
@@ -42,7 +43,7 @@ $colorB: #d0d0d7;
   border-radius: 12px;
   background-color: #fff;
   border: 1px solid #777;
-  margin: 0 5px;
+  margin: 5px 5px;
   &:hover {
     background-color: #999;
   }
@@ -65,4 +66,14 @@ $colorB: #d0d0d7;
   align-items: center;
   justify-items: center;
   transition: all 0.3s ease;
+}
+
+//media queries
+@media (max-width: 700px) {
+  .productPageWrapper {
+    h1 {
+      font-size: 1.25em;
+      padding: 15px 0;
+    }
+  }
 }

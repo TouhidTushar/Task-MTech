@@ -118,7 +118,7 @@ $colorE: #f1ac50;
   top: 0;
   left: 0;
   justify-content: space-evenly;
-  height: 15vh;
+  height: 130px;
   img {
     position: absolute;
     width: 100%;
@@ -135,9 +135,9 @@ $colorE: #f1ac50;
     width: 100%;
     text-transform: uppercase;
     letter-spacing: 4px;
-    font-size: 3vh;
+    font-size: 1.8em;
     text-align: center;
-    margin-bottom: 1vh;
+    margin-bottom: 20px;
     color: #fff;
     text-shadow: 3px 1px 2px rgba(0, 0, 0, 0.8);
   }
@@ -145,15 +145,15 @@ $colorE: #f1ac50;
     position: relative;
     text-transform: uppercase;
     color: #fff;
-    font-size: 1.8vh;
+    font-size: 1em;
   }
 }
 
 #closeCartBtn {
   position: relative;
   width: 95%;
-  font-size: 3.5vh;
-  margin-top: 1.2vh;
+  font-size: 2em;
+  margin-top: 10px;
   color: #fff;
   cursor: pointer;
   &:hover {
@@ -162,8 +162,8 @@ $colorE: #f1ac50;
 }
 
 .cartBody {
-  height: 74vh;
-  padding: 16vh 10px 10vh 10px;
+  height: calc(100vh - 240px) !important;
+  padding: 140px 10px 100px 10px;
   overflow-y: auto;
   overflow-x: hidden;
   h2 {
@@ -172,6 +172,19 @@ $colorE: #f1ac50;
     padding: 50px 0;
     color: $colorA;
   }
+}
+
+.cartFooter {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 80px;
+  background-color: #fff;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .cartItemsRow {
@@ -195,7 +208,7 @@ $colorE: #f1ac50;
   }
   .itemDetailsBox {
     align-self: flex-start;
-    width: 30%;
+    width: 40%;
     margin: 0 8px;
     padding: 5px 0;
     p {
@@ -307,14 +320,165 @@ td {
   }
 }
 
-#cartBtnA {
+.responseModal {
   position: absolute;
-  width: 90%;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 2vh;
-  height: 5vh;
-  font-size: 1.8vh;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  transform: scale(0, 0);
+  opacity: 0;
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+.responseModalActive {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  transform: scale(1, 1);
+  opacity: 1;
+  transition: all 0.4s ease;
+}
+
+.modalContainer {
+  position: absolute;
+  width: 450px;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  opacity: 0;
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+.modalContainerActive {
+  position: absolute;
+  width: 450px;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  opacity: 1;
+  transition: all 0.4s ease;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+#modalCloseBtn {
+  position: absolute;
+  font-size: 1.5em;
+  color: $colorC;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid $colorC;
+  border-radius: 50%;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  &:hover {
+    color: $colorE;
+    border: 2px solid $colorE;
+  }
+}
+
+.modalUpperSection {
+  height: 80px;
+  background-color: $colorD;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalLowerSection {
+  height: 100px;
+  padding: 25px;
+  h1 {
+    font-size: 1.8em;
+    text-align: center;
+    color: $colorD;
+  }
+  h3 {
+    font-size: 1.2em;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+.loadingWheel {
+  width: 60px;
+  height: 60px;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  clip-path: polygon(10% 10%, -20% 100%, 150% 100%);
+  animation: rotate 0.7s linear infinite;
+}
+
+.responseSign {
+  width: 60px;
+  height: 60px;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  animation: appear 0.7s linear forwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  i {
+    font-size: 2em;
+    color: #fff;
+  }
+}
+
+.signCover {
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  background-color: $colorD;
+  animation: reveal 0.5s 0.7s linear forwards;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: scale(0, 0);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes reveal {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+#cartBtnA {
+  width: 60%;
+  height: 40px;
+  font-size: 1em;
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 2px;
@@ -328,9 +492,26 @@ td {
 }
 
 #cartBtnB {
-  height: 4vh;
+  width: 30%;
+  height: 40px;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  border: none;
+  background-color: #e33935;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+  &:hover {
+    background-color: #d63632;
+  }
+}
+
+#cartBtnC {
+  height: 35px;
   padding: 0 10px;
-  font-size: 1.5vh;
+  font-size: 1em;
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 2px;
@@ -338,8 +519,138 @@ td {
   background-color: #777;
   color: #fff;
   border-radius: 5px;
+  margin-bottom: 20px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
   &:hover {
     background-color: #333;
+  }
+}
+
+//media queries
+@media (max-width: 750px) {
+  .cartModal,
+  .cartModalActive {
+    background-color: transparent;
+  }
+  .cartContainer,
+  .cartContainerActive {
+    width: 100%;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .cartItemsRow {
+    padding: 15px;
+    img:nth-of-type(1) {
+      width: 140px;
+    }
+    img:nth-of-type(2) {
+      width: 60px;
+    }
+    .itemControlBox {
+      width: 40px;
+      i {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        margin: 10px 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .cartHeader {
+    h1 {
+      letter-spacing: 3px;
+      font-size: 1.6em;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: 0.9em;
+    }
+  }
+
+  #closeCartBtn {
+    font-size: 1.8em;
+    margin-top: 10px;
+  }
+
+  .cartItemsRow {
+    flex-direction: column;
+    img:nth-of-type(2) {
+      width: 50px;
+      margin: 8px 0;
+    }
+    .itemDetailsBox {
+      align-self: center;
+      width: 100%;
+      margin: 8px 0;
+      padding: 5px;
+      p {
+        text-align: center;
+      }
+    }
+    .itemControlBox {
+      width: unset;
+      height: 40px;
+      margin: 8px 0;
+      flex-direction: row;
+      i {
+        width: 30px;
+        height: 30px;
+        margin: 0 10px;
+      }
+    }
+  }
+
+  .modalContainer,
+  .modalContainerActive {
+    width: 300px;
+  }
+
+  #modalCloseBtn {
+    font-size: 1.3em;
+    width: 25px;
+    height: 25px;
+  }
+
+  .modalUpperSection {
+    height: 70px;
+    padding: 20px;
+  }
+
+  .modalLowerSection {
+    height: 100px;
+    padding: 20px;
+    h1 {
+      font-size: 1.5em;
+    }
+    h3 {
+      font-size: 1em;
+    }
+  }
+
+  #cartBtnA,
+  #cartBtnB {
+    width: 52%;
+    height: 35px;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+  }
+
+  #cartBtnC {
+    height: 30px;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 330px) {
+  #orderForm {
+    input {
+      width: 270px;
+    }
   }
 }

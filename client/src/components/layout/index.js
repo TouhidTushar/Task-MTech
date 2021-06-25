@@ -1,15 +1,15 @@
-// import Footer from "../footer";
+import Footer from "../footer";
 import Header from "../header";
 import "./style.css";
 
-const Layout = (props) => {
+function Layout(props) {
   return (
     <div className="mainContainer">
       <Header />
       {props.children}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
-};
+}
 
 export default Layout;

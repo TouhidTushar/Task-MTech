@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemsToCart } from "../../actions";
+import offer from "../../assets/offer.png";
 import "./style.css";
 
 function Card(props) {
@@ -41,9 +42,20 @@ function Card(props) {
   return (
     <div className="cardWrapper">
       <div className="card">
+        {/* card-image */}
         <div className={addToCart ? "imgBoxActive" : "imgBox"}>
           <img src={item.imageRef} alt={item.title + " photo"} />
         </div>
+
+        <div className="hiddenInfo">
+          {item.quantity > 0 ? (
+            <p>{item.quantity} pieces left!</p>
+          ) : (
+            <p>out of stock!</p>
+          )}
+        </div>
+
+        {/* card-details */}
         <div className="detailsBox">
           <p>{item.title}</p>
           {item.offer !== 0 ? (
@@ -53,6 +65,8 @@ function Card(props) {
           ) : (
             <p>${item.price}</p>
           )}
+
+          {/* quantity-control */}
           {addToCart ? (
             <div className="productQuantityControl">
               <i
@@ -86,6 +100,11 @@ function Card(props) {
           ) : null}
         </div>
       </div>
+
+      {/* offer-tag */}
+      {item.offer > 0 ? <img src={offer} alt="" id="offerTag" /> : null}
+
+      {/* card-button */}
       {item.quantity === 0 ? (
         <button className="dummyBtn">Out of stock</button>
       ) : addToCart ? (
@@ -96,11 +115,11 @@ function Card(props) {
             handleAddToCart();
           }}
         >
-          <i className="fas fa-shopping-cart"></i> Add to cart
+          Confirm
         </button>
       ) : (
         <button className="addToCartBtn" onClick={() => setAddToCart(true)}>
-          Buy Now
+          <i className="fas fa-shopping-cart"></i> Add to cart
         </button>
       )}
     </div>

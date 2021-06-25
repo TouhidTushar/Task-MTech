@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getAllCategories, getAllProducts, getCartItems } from "./actions";
+import {
+  getAllCategories,
+  getAllProducts,
+  getCartItems,
+  getOrderHistory,
+} from "./actions";
 import "./App.css";
 import { BrowserRouter as Switch, Route } from "react-router-dom";
 import ProductsPage from "./containers/productsPage";
@@ -13,6 +18,7 @@ function App() {
     dispatch(getAllProducts());
     dispatch(getAllCategories());
     dispatch(getCartItems());
+    dispatch(getOrderHistory());
     // eslint-disable-next-line
   }, []);
   return (
