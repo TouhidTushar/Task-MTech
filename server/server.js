@@ -9,7 +9,7 @@ const orderRoutes = require("./src/routes/order");
 require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT || 8080; //port
+const port = process.env.PORT || 2000; //port
 
 //front end static files
 var path = require("path");
@@ -31,4 +31,5 @@ app.get("/*", function (req, res) {
 
 app.listen(port, () => {
   console.log("Server is running on port:" + port);
+  console.log("Open http://localhost:" + port + " to view it in the browser.");
 });
