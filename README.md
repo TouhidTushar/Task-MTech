@@ -23,7 +23,7 @@ cd into project's server directory and run the following commands:
 ### `nodemon server`
 
 Runs the project in the development mode.\
-Server will server the static frontend files.\
+Server will serve the static frontend files.\
 Open [http://localhost:2000](http://localhost:2000) to view it in the browser.
 
 Alternatively, you can also run the server and the client side on separate ports\
