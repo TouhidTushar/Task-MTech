@@ -44,4 +44,4 @@ cd into project's client directory and run:
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.\
 Changes made in the client side code will be automatically updated.
 
-### Thank You
+### Thank You!
